@@ -1,0 +1,192 @@
+\documentclass[12pt,A4paper]{article}
+\usepackage[top=1cm,right=2cm,bottom=3cm,left=2cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\begin{document}
+\begin{center}
+	Muhammad Rokan Azriel Prananta
+	\\ 24010121130045
+	\\ Tugas $1$ Mata Kuliah Aljabar II
+	\\ Solusi Latihan Soal Nomor 1
+\end{center}
+\begin{enumerate}
+	\item Ditinjau ring bilangan bulat $\left( \mathbb{Z}, +, \times\right)$ dan ring matriks $\left(M_2\left(\mathbb{Z}\right), +, \times\right)$ dengan
+	\[ M_2(\mathbb{Z}) = \left\lbrace\begin{bmatrix}
+		a & b \\
+		b & a
+	\end{bmatrix} | \forall a,b \in \mathbb{Z}\right\rbrace \]
+	Didefinisikan fungsi $\varphi : M_2(\mathbb{Z}) \rightarrow \mathbb{Z}$ dengan
+	\[ \varphi \left( \begin{bmatrix}
+		a & b \\
+		b & a
+	\end{bmatrix}\right) = a - b, \forall \begin{bmatrix}
+	a & b\\
+	b & a
+\end{bmatrix} \in M_2(\mathbb{Z})\]
+\begin{enumerate}
+	\item Bukti bahwa $\varphi$ merupakan suatu homomorfisma
+	 \begin{enumerate}
+	 	\item Akan ditunjukkan untuk operasi penjumlahan 
+	 	\\ Diambil sembarang $\begin{bmatrix}
+	 		a & b\\
+	 		b & a
+	 	\end{bmatrix}, \begin{bmatrix}
+	 	c & d\\
+	 	d & c
+ 	\end{bmatrix} \in M_2(\mathbb{Z})$ sedemikian sehingga
+ 	\begin{eqnarray*}
+ 		\varphi \left(\begin{bmatrix}
+ 			a & b\\
+ 			b & a
+ 		\end{bmatrix} + \begin{bmatrix}
+ 		c & d\\
+ 		d & c
+ 	\end{bmatrix}  \right) &=& \varphi \left(\begin{bmatrix}
+ 	a+c & b+d\\
+ 	b+d & a+c
+ \end{bmatrix}\right) \\
+	&=& \varphi\left((a + c) - (b + d)\right) \\
+	&=& \varphi\left((a-b) + (c - d)\right) \\
+	&=& \varphi \left(\begin{bmatrix}
+		a & b\\
+		b & a
+	\end{bmatrix} + \begin{bmatrix}
+		c & d\\
+		d & c
+	\end{bmatrix}  \right)
+ 	\end{eqnarray*}
+ $\therefore$ Terbukti bahwa operasi penjumlahan pada pemetaan $\varphi$ dapat diawetkan.
+ \item Akan ditunjukkan untuk operasi perkalian
+ \\ Diambil sembarang $\begin{bmatrix}
+ 	a & b\\
+ 	b & a
+ \end{bmatrix}, \begin{bmatrix}
+ 	c & d\\
+ 	d & c
+ \end{bmatrix} \in M_2(\mathbb{Z})$ sedemikian sehingga
+\begin{eqnarray*}
+	\varphi \left(\begin{bmatrix}
+		a & b\\
+		b & a
+	\end{bmatrix} \times \begin{bmatrix}
+		c & d\\
+		d & c
+	\end{bmatrix}  \right) &=& \varphi \left(\begin{bmatrix}
+		ac + bd & bc+ad\\
+		bc+ad & bd+ac
+	\end{bmatrix}\right) \\
+	&=& \varphi\left((ac + bd) - (bc + ad)\right) \\
+	&=& \varphi\left((ac - bc) + (bd - ad)\right) \\
+	&=& \varphi\left((a - b)c + (b - a)d\right) \\
+	&=& \varphi \left(\begin{bmatrix}
+		ac & bc\\
+		bc & ac
+	\end{bmatrix} + \begin{bmatrix}
+		bd & ad\\
+		ad & bd
+	\end{bmatrix}  \right) \\
+	&=& \varphi \left(\begin{bmatrix}
+		ac + bd & bc+ad\\
+		bc+ad & bd+ac
+	\end{bmatrix}\right) \\
+&=& \varphi \left(\begin{bmatrix}
+	a & b\\
+	b & a
+\end{bmatrix} \times \begin{bmatrix}
+	c & d\\
+	d & c
+\end{bmatrix}  \right)
+\end{eqnarray*}
+$\therefore$ Terbukti bahwa operasi perkalian pada pemetaan $\varphi$ dapat diawetkan.
+	 \end{enumerate}
+ $\therefore$ Oleh karena i dan ii terbukti maka dapat disimpulkan bahwa pemetaan $\varphi$ merupakan suatu homomorfisma ring.
+ \newpage
+ \item Kernel dari $\varphi$
+ \begin{eqnarray*}
+ 	Ker(\varphi) &=& \left\lbrace \begin{bmatrix}
+ 		a & b\\
+ 		b & a
+ 	\end{bmatrix} \in M_2(\mathbb{Z}) | \varphi\left(\begin{bmatrix}
+ 	a & b\\
+ 	b & a
+ \end{bmatrix}\right) = 0 \right\rbrace \\
+&=& \left\lbrace \begin{bmatrix}
+	a & b\\
+	b & a
+\end{bmatrix} \in M_2(\mathbb{Z}) | a - b = 0 \right\rbrace \\
+&=& \left\lbrace \begin{bmatrix}
+	a & b\\
+	b & a
+\end{bmatrix} \in M_2(\mathbb{Z}) | a = b \right\rbrace \\
+&=&\left\lbrace \begin{bmatrix}
+	b & b\\
+	b & b
+\end{bmatrix} \in M_2(\mathbb{Z})  \right\rbrace \\
+&=&\left\lbrace \begin{bmatrix}
+	a & a\\
+	a & a
+\end{bmatrix} \in M_2(\mathbb{Z})  \right\rbrace
+ \end{eqnarray*}
+\item Bukti bahwa $M_2(\mathbb{Z})/Ker(\varphi) \cong \mathbb{Z}$
+\\  Diketahui pemetaan 
+\[\phi :M_2(\mathbb{Z})/Ker(\varphi) \rightarrow \mathbb{Z} \]
+Diambil sembarang dua elemen yang bernilai sama, yaitu $\begin{bmatrix}
+	a & b\\
+	b & a
+\end{bmatrix} + Ker(\varphi),\begin{bmatrix}
+c & d\\
+d & c
+\end{bmatrix} + Ker(\varphi)  \in M_2(\mathbb{Z})/Ker(\varphi)$. Lalu akan ditunjukkan
+\begin{enumerate}
+	\item Pemetaan $\phi$ bersifat injektif
+	\\ Oleh karena 
+	\begin{equation}\tag{1}\begin{bmatrix}
+		a & b\\
+		b & a
+	\end{bmatrix} + Ker(\varphi) = \begin{bmatrix}
+		c & d\\
+		d & c
+	\end{bmatrix} + Ker(\varphi)
+\end{equation}
+,maka diperoleh $\varphi \left(\begin{bmatrix}
+	a & b\\
+	b & a
+\end{bmatrix}\right) = \varphi \left(\begin{bmatrix}
+c & d\\
+d & c
+\end{bmatrix}\right)$ $\Leftrightarrow \varphi \left(\begin{bmatrix}
+a & b\\
+b & a
+\end{bmatrix}\right) - \varphi \left(\begin{bmatrix}
+c & d\\
+d & c
+\end{bmatrix}\right) = 0'$ sedemikian sehingga $\begin{bmatrix}
+a & b\\
+b & a
+\end{bmatrix} -\begin{bmatrix}
+c & d\\
+d & c
+\end{bmatrix} \in  Ker(\varphi)$ yang menunjukkan bahwa persamaan 1 bersifat benar. 
+\\ $\therefore$ Terbukti bahwa pemetaan $\phi$ bersifat injektif.
+\item Pemetaan $\phi$ bersifat surjektif
+\\ Diambil sembarang elemen $x \in \mathbb{Z}$, maka terdapat $\begin{bmatrix}
+	a & b\\
+	b & a
+\end{bmatrix} \in M_2(\mathbb{Z})$ sehingga 
+\[x = \varphi\left(\begin{bmatrix}
+	a & b\\
+	b & a
+\end{bmatrix}\right)\]
+Hal ini menunjukkan adanya $\begin{bmatrix}
+	a & b\\
+	b & a
+\end{bmatrix} + Ker(\varphi) \in M_2(\mathbb{Z})/Ker(\varphi)$ sehingga memenuhi \[x = \varphi\left(\begin{bmatrix}
+a & b\\
+b & a
+\end{bmatrix} + Ker(\varphi)\right)\]
+$\therefore$ Hal ini menunjukkan bahwa pemetaan $\phi$ bersifat surjektif. 
+\end{enumerate}
+$\therefore$ Ole karena i dan ii terbukti maka dapat disimpulkan bahwa $M_2(\mathbb{Z})/Ker(\varphi) \cong \mathbb{Z}$
+\end{enumerate}
+\end{enumerate}
+\end{document}

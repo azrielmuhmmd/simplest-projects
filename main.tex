@@ -1,0 +1,33 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[top=1cm,right=2cm,bottom=3cm,left=2cm]{geometry}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usepackage[skip=1ex, font=small, labelfont=bf]{caption}
+\usetikzlibrary{positioning}
+\usepackage{tkz-fct}
+\begin{document}
+	\begin{eqnarray*}
+		f'(x) &=& (x-2) (x-3) (x-4) \\
+		f'(x) &=& x^3 - 9x^2 + 26x - 24
+	\end{eqnarray*}
+	as we know that :
+	\\ $\int f' = F$ , then
+	\begin{eqnarray*}
+		\int x^3 - 9x^2 + 26x - 24 dx &=& \frac{1}{4}x^4 - 3x^3 + 13x^2 - 24x + C \\
+		F &=& \frac{1}{4}x^4 - 3x^3 + 13x^2 - 24x + C
+	\end{eqnarray*}
+	Due to $f(2) = 2$, then :
+	\begin{eqnarray*}
+		f(2) &=& 2 \\
+		-16 + C &=& 2 \\
+		C &=& 18
+	\end{eqnarray*}
+	Then the graph is :
+	
+\begin{tikzpicture}
+  \begin{axis} [axis lines=center]
+    \addplot [domain=-10:10, smooth, thick] { 1/4*x^3 - 3*x^3 + 13*x^2 + 24*x + 18};
+  \end{axis}
+\end{tikzpicture}
+\end{document}

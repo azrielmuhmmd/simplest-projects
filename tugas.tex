@@ -1,0 +1,128 @@
+\documentclass[12pt,A4paper]{article}
+\usepackage[top=1cm,right=2cm,bottom=3cm,left=2cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\begin{document}
+	\begin{center}
+		Muhammad Rokan Azriel Prananta
+		\\ 24010121130045
+		\\ Tugas $1$ Mata Kuliah Matematika Diskrit
+		\\ Algoritma RSA
+	\end{center}
+	\begin{itemize}
+		\item  $\mathbf{Definisi}$
+		\\ RSA atau $Rivest-Shamir-Adleman$ merupakan algoritma kunci-publik yang ditemukan oleh Ronald Rivest, Adi Shamir, dan Leonard Adleman pada tahun $1976$. Keamanan algoritma RSA terletak pada kekompleksnya pengfaktoran bilangan bulat yang nilainya besar menjadi faktor-faktor bilangan prima.
+		\item $\mathbf{Properti}$
+		\begin{enumerate}
+			\item $p$ dan $q$ sebagai bilangan prima
+			\item $n = p \times q$
+			\item  $\phi(n)= (p-1)(q-1)$
+			\item $e$ sebagai kunci enkripsi dengan syarat $\gcd(e, \phi(n)) =1$
+			\item $d$ sebagai kunci enkripsi di mana $d$ didapatkan dari perhitungan
+			\[ d \equiv e^{-1} (\text{mod }\phi(n)) \]
+			\item $m$ sebagai plainteks dan $c$ sebagai chiperteks
+		\end{enumerate}
+	\item $\mathbf{Rumus \: Enkripsi\:  dan \: Dekripsi}$
+	\begin{enumerate}
+		\item Enkripsi
+		\[ E_e(m) = c = m^e (\text{mod } n)\]
+		\item Dekripsi
+		\[ D_d (c)= m = c^d (\text{mod } n) \]
+	\end{enumerate}
+	\item $\mathbf{Prosedur \: Pembangkita  \: Kunci}$
+	\begin{enumerate}
+		\item Memilih dua bilangan prima $p$ dan $q$
+		\item Menghitung $n = p \times q$
+		\item Menghitung $\phi(n)= (p-1)(q-1)$
+		\item Memilih bilangan bulat $e$ sebagai kunci publik di mana $e$ harus relarif prima terhadap $\phi(n)$
+		\item Menghitung kunci dekripsi $d$ dengan persamaan
+		\[ed = 1 \left(\text{ mod } \phi(n)\right) \]
+	\end{enumerate}
+	Di mana hasil dari algoritma di atas adalah
+	\begin{enumerate}
+		\item Kunci publik adalah pasangan $(e, n)$
+		\item Kunci privasi adalah pasangan $(d, n)$
+	\end{enumerate}
+\newpage
+	\item $\mathbf{Langkah \: Enkripsi}$
+	\begin{enumerate}
+		\item Menyatakan pesan atau kode menjadi blok-blok chiperteks berupa
+		\[m_1, m_2, \dots , m_n\]
+		untuk $0 \leq m_1 < (n-1)$.
+		\item Menghitung blok chiperteks $c_i$ untuk plainteks $m_i$ menggunakan kunci publik $e$ dengan persamaan
+		\[c_i \equiv m_i^e (\text{mod }n)\]
+	\end{enumerate}
+	\item $\mathbf{Langkah \: Dekripsi}$
+	\begin{enumerate}
+		\item Memisalkan blok-blok chiperteks berupa
+		\[c_1,c_2, \dots, c_n\]
+		\item Menghitung kembali blok plainteks $m_i$ dari blok chiperteks $c_i$ menggunakan kunci privat $d$ dengan persamaan
+		\[m_i \equiv c_i^d (\text{mod } n)\]
+	\end{enumerate}
+	\item $\mathbf{Contoh \: Pesan}$
+	\begin{enumerate}
+	\item Penyusunan Kunci-kunci pada Algoritma
+	\\ Seorang peretas memilih dua buah bilangan prima,yaitu $p = 47$ dan $q=71$ sehingga dapat dikalkulasi nilai $n = 47 \times 71 = 3337$ dan $\phi(n) = 46 \times 70 = 3220$. Lalu, peretas tersebut memilih kunci publik $e = 79$ karena $\gcd(79, 3220) = 1$. Selanjutnya persetas melakukan kalkulasi kunci privat $d$ dengan rumus
+	\[ed \equiv 1 (\text{mod }\phi(n))\]
+	diperoleh nilai $d$ sebagai kebalikan dari nilai $e$ dalam modulus $\phi(n)$. Di mana nilai $d$ dapat dihitung dengan rumus
+	\[d = \frac{1 + k \; \phi(n)}{e}\]
+	Dengan melakukan substitusi nilai $k$ di mana $\forall k \in \mathbb{Z^+}$ sehingga diperolej nilai $d = 1019$ sebagai kunci privat untuk melakukan dekripsi.
+	\item Pengiriman Pesan Kode (Enkripsi kode)
+	\\ Berdasarkan nomor $1$, seorang kepala FBI mengirim plainteks kepada peretas berupa
+	\[\text(HELLO \: KARIR \:ANDA \: SAMPAI \:DI \:SINI )\]
+	Dengan memisalkan $A= 00, B=01, \dots, Z =25$, maka pesan di atas dikodekan ke dalam bilangan bulat dengan spasi yang diabaikan berupa 
+	\[07 04 11 11 14 10 00 17 08 17 00 13 03 00 18 00 12 15 00 08 03 08 18 08 13 08 \]
+	Memecahkan kode di atas menjadi blok yang setiap bloknya terdiri dari $4$ digit berupa
+	\newpage
+	\[m_1 = 0704\]
+	\[m_2 = 1111 \]
+	\[m_3 = 1410\]
+	\[m_4 = 0017\]
+	\[m_5 = 0817\]
+	\[m_6 = 0013\]
+	\[m_7 = 0300\]
+	\[m_8 =1800\]
+	\[m_9 = 1215\]
+	\[m_{10} = 0008\]
+	\[m_{11} = 0308\]
+	\[m_{12} = 1808\]
+	\[m_{13} = 1308\]
+	Perhatikan bahwa nilai $m_i \in [0, 3337 -1]$.
+	\\ Selanjutnya agen FBI melakukan enkripsi blok-blok di atas menggunakan kunci publik yang telah peretas tentukan $e = 79$ sedemikian sehingga diperoleh 
+	\[c_1 = 704^{79} \text{mod } 3337 = 328\]
+\[c_2 = 111^{79} \text{mod } 3337 = 301\]
+\[c_3 = 1410^{79} \text{mod } 3337 = 423\]
+\[c_4 = 17^{79} \text{mod } 3337 = 827\]
+\[c_5 = 817^{79} \text{mod } 3337 = 729\]
+\[c_6 = 13^{79} \text{mod } 3337 = 2066\]
+\[c_7 = 300^{79} \text{mod } 3337 = 3126\]
+\[c_8 = 1800^{79} \text{mod } 3337 = 338\]
+\[c_9 = 1215^{79} \text{mod } 3337 = 109 \]
+\[c_{10} = 8^{79} \text{mod } 3337 = 2807 \]
+\[c_{11} = 308^{79} \text{mod } 3337 =537 \]
+\[c_{12} = 1808^{79} \text{mod } 3337 =2112 \]
+\[c_{13} = 1308^{79} \text{mod } 3337 = 1752\]
+Dari perhitungan di atas diperoleh chiperteks 
+\[0328 0301 0423 0827 0729 2066 3126 0338 0109 2807 0537 2112 1751\]
+\item Dekripsi Kode 
+\\ Setelah peretas menerima kode chiperteks yang telah dikirim oleh FBI, si peretas melakukan dekripsi pada chiperteks dengan menggunakan kunci privatnya $d = 1019$ menjadi
+\[m_1 = 328^{1019} (\text{mod }) 3337 = 704\]
+\[m_2 = 301^{1019} (\text{mod }) 3337 = 1111\]
+\[m_3 = 423^{1019} (\text{mod }) 3337 =1410 \]
+\[m_4 = 827^{1019} (\text{mod }) 3337 = 17\]
+\[m_5 = 729^{1019} (\text{mod }) 3337 = 817\]
+\[m_6 = 2066^{1019} (\text{mod }) 3337 = 13\]
+\[m_7 = 3126^{1019} (\text{mod }) 3337 = 300\]
+\[m_8 = 338^{1019} (\text{mod }) 3337 = 1800\]
+\[m_9 = 109^{1019} (\text{mod }) 3337 = 1215\]
+\[m_{10} = 2807^{1019} (\text{mod }) 3337 = 8\]
+\[m_{11} = 537^{1019} (\text{mod }) 3337 = 308\]
+\[m_{12} = 2112^{1019} (\text{mod }) 3337 = 1808\]
+\[m_{13} =1752^{1019} (\text{mod }) 3337 = 1308\]
+Berdasarkan kalkulasi diatas diperoleh plainteks
+\[07 04 11 11 14 10 00 17 08 17 00 13 03 00 18 00 12 15 00 08 03 08 18 08 13 08\]
+yang apabila disesuaikan dengan permisalan di atas diperoleh pesan berupa
+\[\text{HELLOKARIRANDASAMPAIDISINI}\]
+	\end{enumerate}
+	\end{itemize}
+\end{document}
